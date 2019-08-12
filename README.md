@@ -4,6 +4,7 @@ Q1: v-show 与 v-if 区别
 1.相同点：v-show和v-if都能控制元素的显示和隐藏。
 
 2.不同点：
+
 实现本质方法不同：
 v-show本质就是通过设置css中的display设置为none，控制隐藏；
 v-if是动态的向DOM树内添加或者删除DOM元素。
