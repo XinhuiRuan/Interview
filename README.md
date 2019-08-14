@@ -72,6 +72,20 @@ computed 可以依赖其它 computed，甚至是其它组件的 data。
 
 Q2-3：watch 是一个对象时，它有哪些选项？
 
+handler方法：watch中需要具体执行的方法；
 
+immediate属性：为true时则立即先去执行里面的handler方法；如果为false，不会在绑定的时候就执行。
+
+deep属性：默认值是 false，代表是否深度监听。当需要监听一个对象的改变时，普通的watch方法无法监听到对象内部属性的改变，此时就需要deep属性对对象进行深度监听，也就是在对象中层层遍历，并在监听对象上的每一个属性上都添加监听，固然也会损耗性能。（如果只需要监听对象中的一个属性值，则可以做以下优化：使用字符串的形式监听对象属性）
+
+注意点：
+
+1. 如果在handler函数中使用了箭头函数，改变了this指向，就无法获取到Vue实例，则为undifined。
+
+2. 对于父子组件传参，异步获取数据有时会存在获取不到值的情况。这时候watch就派上用场，适当的时候要配合immediate或者deep属性配合使用。
+
+参考资料：https://blog.csdn.net/Amanda_wmy/article/details/83749560
+
+         https://blog.csdn.net/yangdengcheng/article/details/90479976
 
 
