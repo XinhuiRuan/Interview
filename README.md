@@ -89,3 +89,29 @@ deep属性：默认值是 false，代表是否深度监听。当需要监听一�
          https://blog.csdn.net/yangdengcheng/article/details/90479976
 
 
+Q3：事件修饰符
+
+Vue提供事件修饰符是因为：方法只有纯粹的数据逻辑，而不是去处理 DOM 事件细节。
+
+1. .stop：阻止冒泡（通俗讲就是阻止事件向上级DOM元素传递）；
+
+2. .prevent：阻止默认事件的发生（默认事件比如点击超链接的时候会进行页面的跳转，点击表单提交按钮时会重新加载页面等）；
+
+3. .capture：捕获冒泡，即有冒泡发生时，有该修饰符的dom元素会先执行，如果有多个，从外到内依次执行，然后再按自然顺序执行触发的事件；
+    （详解请看：https://www.cnblogs.com/xiaozhang666/p/10430059.html）
+    
+4. .self：将事件绑定到自身，只当在 event.target 是当前元素自身时触发处理函数，即事件不是从内部元素触发的，通常用于避免冒泡事件的影响；
+
+5. .once：设置事件只能触发一次，比如按钮的点击等。
+
+6. .passive：用于对DOM的默认事件进行性能优化，默认行为将会立即触发,对应 addEventListener 中的 passive 选项（详情请看：https://blog.csdn.net/wildye/article/details/80223679）。
+
+注意点：
+
+1. 使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 v-on:click.prevent.self 会阻止所有的点击，而 v-on:click.self.prevent 只会阻止对元素自身的点击。
+
+2. 不要把 .passive 和 .prevent 一起使用，因为 .prevent 将会被忽略，同时浏览器可能会向你展示一个警告。请记住，.passive 会告诉浏览器你不想阻止事件的默认行为。
+
+参考资料：https://www.cnblogs.com/Delo/articles/10475634.html
+
+Q4：双向绑定的原理
