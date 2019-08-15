@@ -114,4 +114,23 @@ Vue提供事件修饰符是因为：方法只有纯粹的数据逻辑，而不�
 
 参考资料：https://www.cnblogs.com/Delo/articles/10475634.html
 
+
 Q4：双向绑定的原理
+
+vue.js 是采用数据劫持结合发布者-订阅者模式的方式，核心的 API 是通过Object.defineProperty()来劫持各个属性的setter / getter，在数据变动时发布消息给订阅者，触发相应的监听回调，这也是为什么 Vue.js 2.x不支持IE8的原因。
+
+解释一：
+要实现双向绑定，首先进行数据劫持，所以需要设置一个监听器Observer，用来监听所有属性。如果属性发生变化，就需要告诉订阅者Watcher看是否需要更新。因为订阅者很多，所以需要一个消息订阅器Dep来专门收集这些订阅者，然后在监听器和订阅者之间进行统一管理，最后需要一个指令解析器Compile，对每个节点元素进行扫描和解析，将相关指令（v-model，v-on）对应初始化一个订阅者Watcheer，并替换模板数据或绑定相应函数。
+
+解释二：
+首先我们为每个vue属性用Object.defineProperty()实现数据劫持，为每个属性分配一个订阅者集合的管理数组dep；然后在编译的时候在该属性的数组dep中添加订阅者，v-model会添加一个订阅者，{{}}也会，v-bind也会，只要用到该属性的指令理论上都会，接着比如为input会添加监听事件，修改值就会为该属性赋值，触发该属性的set方法，在set方法内通知订阅者数组dep，订阅者数组循环调用各订阅者的update方法更新视图。
+
+参考资料：https://www.cnblogs.com/zhenfei-jiang/p/7542900.html
+
+         https://www.jianshu.com/p/bb5d1bede3ea
+         
+        
+Q5：怎么理解单项数据流
+
+
+Q5：
