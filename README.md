@@ -196,7 +196,64 @@ Q5：怎么理解单项数据流
     
 Q6：简述下生命周期钩子
 
+一. 定义
 
+生命周期：vue实例从创建到销毁的过程（从开始创建，初始化数据，编译模板，挂载DOM，渲染，更新再渲染，最后到销毁）。
+
+生命周期钩子：是在Vue对象生命周期的某个阶段执行的已定义方法。
+
+生命周期的四个状态：
+  1、creating -- vue实例被创建的过程
+  2、mounting -- 挂载到真实的DOM节点
+  3、updating -- 如果data中的数据改变就会触发对应组件的重新渲染
+  4、destroying -- 实例销毁
+ 
+注意点： 
+  不要在选项属性或回调上使用箭头函数，比如 created: () => console.log(this.a) 或 vm.$watch('a', newValue => this.myMethod())。
+  因为箭头函数并没有 this，this 会作为变量一直向上级词法作用域查找，直至找到为止，
+  经常导致 Uncaught TypeError: Cannot read property of undefined 或 Uncaught TypeError: this.myMethod is not a function 之类的错误。
+
+二. 8种钩子函数介绍即具体项目中的作用
+
+1. beforeCreadted
+  触发的行为：实例创建之前调用，vue实例的挂载元素$el和数据对象data都为undefined，还未初始化。
+  可以做的事：加个loading事件。
+    
+2. created
+  触发的行为：实例创建成功，vue实例的数据对象data有了，$el还没有。
+  可以做的事：结束loading，然后做一些数据的初始化，实现函数自执行（这个在Vue的生命周期只会执行一次）。
+  
+3. beforeMount
+  触发的行为：数据中的data在模版中先占一个位置，vue实例的$el和data都初始化了，但还是虚拟的dom节点，具体的data.filter还未替换。
+  
+4. mounted
+  触发的行为：模版中的data数据直接显示出来了，vue实例挂载完成，data.filter成功渲染。
+  可以做的事：在这发起ajax后端请求，拿回数据，配合路由钩子做一些事情 （会经常进行数据处理和更新）。
+  
+5. beforeUpdate
+  触发的行为：当data数据发生变化调用，发生在虚拟DOM重新渲染和打补丁之前。
+  
+6. updated
+  触发的行为：数据更改导致的虚拟DOM重新渲染和打补丁。
+  可以做的事：数据更新时，做一些处理（此处也可以用watch进行观测）。
+  
+7. beforeDestroy
+  触发的行为：在vue实例销毁之前调用，此时实例任然可用。
+  可以做的事：你确认删除XX吗、 点击下一步的时候、或者需要是存浏览器储存的时候、清除定时器等等。
+            （因为vue是一个单页面，如果定时器在vue生命周期销毁之前不清除的话，那就会导致定时器一直在运行，影响性能）
+  
+8. destroyed
+  触发的行为：在vue实例销毁之后调用，vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。
+  可以做的事：当前组件已被删除，清空相关内容。下一步，跳转路由等等。
+    
+参考资料：https://blog.csdn.net/qq_35585701/article/details/81216704
+      
+         https://blog.csdn.net/lgysjfs/article/details/86598330
+         
+         https://www.jianshu.com/p/0d50ea1cef93?utm_source=oschina-app (超详细)
+
+
+  
 
 
   
