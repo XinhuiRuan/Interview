@@ -153,5 +153,50 @@ Q5：怎么理解单项数据流
   
 单项数据流详解：
 
+3.vue 组件数据流
+
+  从上面 v-model 的分析我们可以这么理解，双向数据绑定就是在单向绑定的基础上给可输入元素（input、textare等）添加了 change(input) 事件，来动态修改 model 和 view ，即通过触发（$emit）父组件的事件来修改mv来达到 mvvm 的效果。
+
+  而 vue 组件间传递数据是单向的，即数据总是由父组件传递到子组件，子组件在其内部可以有自己维护的数据，但它无权修改父组件传递给它的数据，当开发者尝试这样做的时候，vue 将会报错。
+  
+  这样做是为了组件间更好的解耦，在开发中可能有多个子组件依赖于父组件的某个数据，假如子组件可以修改父组件数据的话，一个子组件变化会引发所有依赖这个数据的子组件发生变化，所以 vue 不推荐子组件修改父组件的数据，直接修改 props 会抛出警告。
+  
+  所以，有两种常见的试图改变一个 prop 的情形：
+  
+  1、这个 prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用。 
+      => 定义一个局部变量，并用 prop 的值初始化它。  
+      props: ['initialCounter'],
+      data: function () {
+        return {
+          counter: this.initialCounter
+        }
+      }
+        
+  2、这个 prop 以一种原始的值传入且需要进行转换。
+      => 使用这个 prop 的值来定义一个计算属性。
+      props: ['size'],
+      computed: {
+        normalizedSize: function () {
+          return this.size.trim().toLowerCase()
+        }
+      }
+     
+注意点：
+  在JS中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变这个对象或数组本身将会影响到父组件的状态。
+  
+  //如此解决引用传递  
+　1：var newObject = jQuery.extend(true, {}, oldObject); 
+  2：var obj={};
+     obj=JSON.parse(JSON.stringify(oldObject));
+  
+参考资源：https://www.jianshu.com/p/8b4f4c2f75e4
+          
+         https://www.cnblogs.com/em2464/p/10418535.html
+         
+    
+Q6：简述下生命周期钩子
+
+
+
 
   
