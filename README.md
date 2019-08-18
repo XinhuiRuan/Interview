@@ -132,6 +132,8 @@ vue.js 是采用数据劫持结合发布者-订阅者模式的方式，核心的
         
 Q5：怎么理解单项数据流
 
+深入了解前提：
+
 1、v-model 用在 input 元素上
   v-model在使用的时候很像双向绑定的（实际上也是。。。），但是 Vue 是单项数据流，v-model 只是语法糖而已。
   
@@ -149,5 +151,7 @@ Q5：怎么理解单项数据流
   <currency-input :value="price" @input="price = arguments[0]"></currency-input>
   所以，给组件添加 v-model 属性时，默认会把 value 作为组件的属性，然后把 'input' 值作为给组件绑定事件时的事件名。这在写组件时特别有用。
   
-3、v-model 的缺点和解决办法
+单项数据流详解：
+
+
   
