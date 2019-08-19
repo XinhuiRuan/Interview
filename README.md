@@ -245,13 +245,49 @@ Q6：简述下生命周期钩子
 8. destroyed
   触发的行为：在vue实例销毁之后调用，vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。
   可以做的事：当前组件已被删除，清空相关内容。下一步，跳转路由等等。
+  
+补充知识点：
+
+i. 什么是挂载？
+  在Vue中指的就是el被实例的vm.$el所替换，并且挂载到该实例中，
+  通俗的说就是Vue的实例挂靠到某个DOM元素「挂载点」的这一个过程，
+  <div id="container">
+  <button @click="changeMsg()">change</button>
+  <span>{{msg}}</span>
+  </div>
+  在上面的例子中就是把Vue的实例挂靠到id为container的div元素上，也就是说使用vm.$el就相当于使用了document.getElementById('container')来找到这个元素了
+  
+ii. 两种方法设置挂载点：el:"#contaier" 或者 手动调用vm.$mount(el)挂载，不设置挂载点就只会进行到created这个方法
+
+iii. 进行beforeMount方法前，vue会判断vue实例中是否有模板，有就直接渲染模板，没有就编译外部的html作为模板
+     具体的优先级为：render 函数的优先级 > template 模版 > outerhtml （待测试）
+     
+iv. 什么是虚拟DOM？
+实例：
+beforeMount() {
+    console.group("%c%s","color:red",'beforeMount--挂载之前的状态')
+    console.log(this.$el);
+},
+输出：
+<div id="container">
+  <button @click="changeMsg()">change</button>
+  <span>{{msg}}</span>
+  </div>
+挂载之前，这里使用{{msg}}先占一个坑，也就是虚拟DOM技术；
+mounted运行之后，已经挂载，则data里的数据插入到真是的DOM中，替换掉{{msg}}。
+
+虚拟DOM的注意点：
+  测试beforeUpdate和updated，使用this.$el输出会出现同样的数据，即beforeUpdate时就已经将数据更新了，这会让人疑惑，这就是虚拟DOM，起始还没渲染到真是的DOM里去。可以使用输出this.$el.innerHTML来查看真实的DOM结构，更新前和更新后数据是不一样的。
+  
     
 参考资料：https://blog.csdn.net/qq_35585701/article/details/81216704
       
          https://blog.csdn.net/lgysjfs/article/details/86598330
          
          https://www.jianshu.com/p/0d50ea1cef93?utm_source=oschina-app (超详细)
-
+         
+Q7：组件中如何通信
+  
 
   
 
