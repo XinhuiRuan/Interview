@@ -29,3 +29,18 @@ The interview questions of Front-end
 性能是可以改善的（V8引擎），而语言的灵活性更重要
 隐藏的错误可以通过单元测试发现
 文档可以通过工具生成
+
+
+基本类型：
+
+ES6的数据类型：Boolean、Number、String、Array、Fucntion、Object、Symbol、undefined、null
+
+TS的数据类型：Boolean、Number、String、Array、Fucntion、Object、Symbol、undefined、null
+             void、any、never、元组、枚举 和 高级类型
+             
+类型注解：
+    作用：相当于强类型语言中的类型声明；
+    语法：(变量 / 函数): type
+    
+元组：特殊的数组，限定了数组元素的数据类型和个数；
+    元组push方法造成的越界问题：新元素可以加入到数组，但是不允许越界访问，会报错，实际开发不建议用push方法
