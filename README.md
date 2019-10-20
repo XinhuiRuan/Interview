@@ -36,7 +36,7 @@ The interview questions of Front-end
 ES6的数据类型：Boolean、Number、String、Array、Fucntion、Object、Symbol、undefined、null
 
 TS的数据类型：Boolean、Number、String、Array、Fucntion、Object、Symbol、undefined、null
-             void、any、never、元组、枚举 和 高级类型
+             void、any、never、元组、枚举(enum) 和 高级类型
              
 类型注解：
     作用：相当于强类型语言中的类型声明；
@@ -44,3 +44,33 @@ TS的数据类型：Boolean、Number、String、Array、Fucntion、Object、Symb
     
 元组：特殊的数组，限定了数组元素的数据类型和个数；
     元组push方法造成的越界问题：新元素可以加入到数组，但是不允许越界访问，会报错，实际开发不建议用push方法
+    
+
+undefined 和 null：在TS中，undefined、null是其他数据类型的子类型，所以其他数据类型可以再被赋值为 undefined、null，前提是需要在tsconfig.json文件                    中将属性 strickNullChecks 设置为 false；
+                   如果不修改该属性，使用严格模式，可以在设置变量为联合数据类型来实现这个效果，比如 let num: number | undefined | null = 123；
+                   
+void: 表示没有任何返回值的数据类型
+
+any：如果不指定一个变量的数据类型，则默认为any类型，与js中变量一样任意赋值
+
+never：表示永远不会有返回值的数据类型
+
+
+枚举类型(enum)：
+枚举是一组有名字的常量集合，分为数字枚举，字符串枚举 和 异构枚举(数字和字符串混用)。 枚举在运行时会被编译成一个对象。
+数字枚举默认第一个元素为0，之后的元素自增长1，存在反向映射；
+字符串枚举不存在反向映射；
+异构枚举容易引起混淆，不建议使用。
+
+枚举成员的性质：
+1. 成员是只读类型，定义后不能修改；
+2. 成员类型分为
+    —— const 常量成员，包括3种情况：无初始值、对已有枚举成员的引用 和 常量表达式，会在编辑阶段被计算；
+    —— computed 计算成员，编译阶段不会被计算，会被保留到程序的执行阶段，另外在 computed 后面的枚举成员一定要被赋值为初始值；
+
+常量枚举：
+特性：在编译阶段会被移除；
+作用：当我们不需要一个对象，而需要对象的值的时候，就可以使用常量枚举，减少在编译阶段的代码；
+
+
+接口：对象类型接口
