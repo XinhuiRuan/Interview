@@ -51,3 +51,7 @@ SSL证书需要绑定IP，不能再同一个ip上绑定多个域名，ipv4资源
 详细资源：https://www.cnblogs.com/Paul-watermelon/p/11141420.html  
 关于第三次握手为什么客户端还要发送 Seq = X + 1 的解释：https://zhidao.baidu.com/question/1833591122346527500.html
 因为 Seq是数据包本身的序列号；ack是期望对方继续发送的那个数据包的序列号。
+
+
+三. TCP 和 UDP 的区别
+
