@@ -79,6 +79,33 @@ UDP只有8字节。
 
 
 四. WebSocket的实现和应用
+1. 什么是WebSocket?
+WebSocket是HTML5中的协议，支持持久连续，http协议不支持持久性连接。Http1.0和HTTP1.1都不支持持久性的链接，HTTP1.1中的keep-alive，将多个http请求合并为1个。
 
-https://www.cnblogs.com/qdhxhz/p/8467715.html
-https://www.zhihu.com/question/20215561
+2. WebSocket是什么样的协议，具体有什么优点？
+HTTP的生命周期通过Request来界定，也就是Request一个Response，那么在Http1.0协议中，这次Http请求就结束了。
+在Http1.1中进行了改进，是的有一个connection：Keep-alive，也就是说，在一个Http连接中，可以发送多个Request，接收多个Response。但是必须记住，在Http中一个Request只能对应有一个Response，而且这个Response是被动的，不能主动发起。
+WebSocket是基于Http协议的，或者说借用了Http协议来完成一部分握手，在握手阶段与Http是相同的。我们来看一个websocket握手协议的实现，基本是2个属性，upgrade，connection。
+
+基本请求如下：
+GET /chat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+Origin: http://example.com
+
+多了下面2个属性：
+Upgrade:webSocket
+Connection:Upgrade
+告诉服务器发送的是Websocket协议，快点帮我找到对应的助理处理，不是那个老土的HTTP
+
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+这3个属性的解释详见知乎版
+
+详细资源：WebSocket介绍  https://www.cnblogs.com/qdhxhz/p/8467715.html
+                知乎版  https://www.zhihu.com/question/20215561
