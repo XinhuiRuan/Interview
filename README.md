@@ -109,3 +109,45 @@ Sec-WebSocket-Version: 13
 
 详细资源：WebSocket介绍  https://www.cnblogs.com/qdhxhz/p/8467715.html
                 知乎版  https://www.zhihu.com/question/20215561
+
+
+五. 说一下web Quality（无障碍）
+能够被残障人士使用的网站才能称得上一个易用的（易访问的）网站。
+残障人士指的是那些带有残疾或者身体不健康的用户。
+
+使用alt属性：
+<img src="person.jpg"  alt="this is a person"/>
+
+有时候浏览器会无法显示图像。具体的原因有：
+—— 用户关闭了图像显示
+—— 浏览器是不支持图形显示的迷你浏览器
+—— 浏览器是语音浏览器（供盲人和弱视人群使用）
+如果您使用了 alt 属性，那么浏览器至少可以显示或读出有关图像的描述。
+
+六. 几个很实用的BOM属性对象方法
+Bom是浏览器对象模型。
+
+1. location对象
+与当前窗口中加载的文档有关的信息，还可以将URL解析为独立的片段。。
+location.href -- 返回或设置当前文档的URL
+location.search -- 返回URL中的查询字符串部分。例如 http://www.dreamdu.com/dreamd.php?id=5&name=dreamdu 返回包括(?)后面的内容
+location.hash -- 返回URL#后面的内容，如果没有#，返回空
+location.host -- 返回URL中的域名部分，例如www.dreamdu.com
+location.hostname -- 返回URL中的主域名部分，例如dreamdu.com
+location.pathname -- 返回URL的域名后的部分。例如 http://www.dreamdu.com/xhtml/ 返回/xhtml/
+location.port -- 返回URL中的端口部分。例如 http://www.dreamdu.com:8080/xhtml/ 返回8080
+location.protocol -- 返回URL中的协议部分。例如 http://www.dreamdu.com:8080/xhtml/ 返回(//)前面的内容 http:
+location.assign -- 设置当前文档的URL
+location.replace() -- 设置当前文档的URL，并且在history对象的地址列表中移除这个URL，location.replace(url);
+location.reload() -- 重载当前页面
+
+2. history对象
+保存着用户上网的历史记录。
+history.go() -- 前进或后退指定的页面数 history.go(num);
+history.back() -- 后退一页
+history.forward() -- 前进一页
+
+3. Navigator对象
+识别和检测显示网页的浏览器类型
+navigator.userAgent -- 返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)
+navigator.cookieEnabled -- 返回浏览器是否支持(启用)cookie
