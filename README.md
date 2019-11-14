@@ -79,6 +79,7 @@ UDP只有8字节。
 
 
 四. WebSocket的实现和应用
+
 1. 什么是WebSocket?
 WebSocket是HTML5中的协议，支持持久连续，http协议不支持持久性连接。Http1.0和HTTP1.1都不支持持久性的链接，HTTP1.1中的keep-alive，将多个http请求合并为1个。
 
@@ -112,6 +113,7 @@ Sec-WebSocket-Version: 13
 
 
 五. 说一下web Quality（无障碍）
+
 能够被残障人士使用的网站才能称得上一个易用的（易访问的）网站。
 残障人士指的是那些带有残疾或者身体不健康的用户。
 
@@ -125,6 +127,7 @@ Sec-WebSocket-Version: 13
 如果您使用了 alt 属性，那么浏览器至少可以显示或读出有关图像的描述。
 
 六. 几个很实用的BOM属性对象方法
+
 Bom是浏览器对象模型。
 
 1. location对象
@@ -151,3 +154,6 @@ history.forward() -- 前进一页
 识别和检测显示网页的浏览器类型
 navigator.userAgent -- 返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)
 navigator.cookieEnabled -- 返回浏览器是否支持(启用)cookie
+
+
+六. 说一下HTML5 drag api
