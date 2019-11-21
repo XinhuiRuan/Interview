@@ -167,5 +167,50 @@ dragend：事件主体 -> 被拖放元素，在整个拖放操作结束时触发
 
 
 七. 说一下http2.0
-https://blog.csdn.net/N1314N/article/details/89406875
+首先补充一下，http和https的区别，相比于http,https是基于ssl加密的http协议。
+
+简要概括：http2.0是基于1999年发布的http1.0之后的首次更新。
+1. 提升访问速度（可以对于，请求资源所需时间更少，访问速度更快，相比http1.0）
+2. 允许多路复用：多路复用允许同时通过单一的HTTP/2连接发送多重请求-响应信息。改善了：在http1.1中，浏览器客户端在同一时间，针对同一域名下的请求有一定
+  数量限制（连接数量），超过限制会被阻塞。
+3. 二进制分帧：HTTP2.0会将所有的传输信息分割为更小的信息或者帧，并对他们进行二进制编码。
+4. 使用报头压缩，HTTP2.0降低了开销。
+5. HTTP2.0让服务器可以将响应主动“推送”到客户端缓存中
+
+详细资源：https://blog.csdn.net/N1314N/article/details/89406875
+
+
+八. 补充400和401、403状态码
+4XX 的响应结果表明客户端是发生错误的原因所在。
+
+(1)400状态码（bad request）：请求无效，表示请求报文中存在语法错误。
+产生原因：
+  1. 前端提交数据的字段名称和字段类型与后台的实体没有保持一致
+  2. 前端提交到后台的数据应该是json字符串类型，但是前端没有将对象JSON.stringify转化成字符串。
+解决方法：
+  1. 对照字段的名称，保持一致性
+  2. 将obj对象通过JSON.stringify实现序列化
+  
+(2)401状态码（unauthorized）：表示发送的请求需要有通过HTTP认证的认证信息
+
+(3)403状态码（forbidden）：服务器已经得到请求，但是资源的访问被服务器拒绝
+
+
+九. fetch发送两次请求的原因
+fetch发送post请求的时候，总是发送2次，第一次状态码是204（No Content），第二次才成功？
+
+比方说发送post请求“/createSth”，在控制台能看到两个url一致的请求：
+  —— 第一个无body、无响应、以OPTIONS方式发送；
+  —— 第二个就是正常的有参数body、有response、post方式提交的请求。
+
+原因很简单，因为你用fetch的post请求的时候，导致fetch第一次使用Options请求发起一个预检的跨域请求（preflight request），从而获知服务端是否允许该跨域请求。如果服务器支持，则在第二次中发送真正的请求。
+
+相关资源：
+  fetch的post方法发送两次请求的例子和解释：https://segmentfault.com/q/1010000008693779
+  JS发送跨域Post请求出现两次请求的解决办法：https://blog.csdn.net/weixin_34314962/article/details/93723222
+  如何使用 fetch api：https://www.jianshu.com/p/1b966c113f64?utm_source=oschina-app
+  ajax和axios、fetch的区别：https://www.jianshu.com/p/8bc48f8fde75
+  
+
+十. Cookie、sessionStorage、localStorage 的区别
 
