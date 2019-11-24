@@ -242,4 +242,12 @@ session,cookie,sessionStorage,localStorage详解： https://www.cnblogs.com/xufe
   2. 创建web worker文件（js，回传函数等）
   3. 创建web worker对象
   
+由于Web Worker创建的线程是受限的子线程，所以会有一些使用限制：
+  1. Web Worker无法访问DOM节点；
+  2. Web Worker无法访问全局变量或是全局函数；
+  3. Web Worker无法调用alert()或者confirm之类的函数；
+  4. Web Worker无法访问window、document之类的浏览器全局变量；
+不过Web Worker中的Javascript依然可以使用setTimeout(),setInterval()之类的函数，也可以使用XMLHttpRequest对象来做Ajax通信。
+目前所有主流浏览器均支持 web worker，除了 Internet Explorer。
+  
 web worker 详细介绍：https://blog.csdn.net/ithanmang/article/details/82622420
