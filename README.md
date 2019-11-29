@@ -299,4 +299,38 @@ iframe详解： https://www.jianshu.com/p/d67b15802a70
 
 
 十五. Cookie如何防范XSS攻击
+Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站上注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可获取用户的敏感信息如 Cookie、SessionID 等，进而危害数据安全。
+
+为了和 CSS 区分，这里把攻击的第一个字母改成了 X，于是叫做 XSS。
+
+XSS 的本质是：恶意代码未经过滤，与网站正常的代码混在一起；浏览器无法分辨哪些脚本是可信的，导致恶意脚本被执行。
+
+而由于直接在用户的终端执行，恶意代码能够直接获取用户的信息，或者利用这些信息冒充用户向网站发起攻击者定义的请求。
+
+在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行，来完成比较复杂的攻击策略。
+
+Cookie防范XSS攻击，需要在HTTP头部配上，set-cookie：
+  1. httponly-。这个属性可以防止XSS,它会禁止javascript脚本来访问cookie。
+  2. secure - 这个属性告诉浏览器仅在请求为https的时候发送cookie。
+结果应该是这样的：Set-Cookie=<cookie-value>.....
+  
+前端安全系列（一）：如何防止XSS攻击？：https://segmentfault.com/a/1190000016551188#articleHeader11
+
+
+十六. Cookie和Session的区别
+cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。同时我们也看到，
+
+由于采用服务器端保持状态的方案在客户端也需要保存一个标识，所以session机制可能需要借助于cookie机制来达到保存标识的目的
+
+cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑到安全应当使用session
+
+session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie
+
+单个cookie保存的数据不能超过4k,很多浏览器都限制一个站点最多保存20个cookie。
+
+Cookie,Session和Token机制和区别：https://www.jianshu.com/p/013f810cdb75
+
+
+十七. 一句话概括RESTFUL
+
 
