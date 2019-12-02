@@ -346,3 +346,14 @@ REST以及RESTful的理解：https://www.jianshu.com/p/0e0ed296d2a3
 
 十八. 讲讲viewport和移动端布局
 响应式布局的常用解决方案对比(媒体查询、百分比、rem和vw/vh）：https://github.com/forthealllight/blog/issues/13
+
+十九. click在ios上有300ms延迟，原因及如何解决？
+(1)粗暴型，禁用缩放
+  <meta name="viewport" content="width=device-width, user-scalable=no"> 
+
+(2)利用FastClick，其原理是：
+  检测到touchend事件后，立刻出发模拟click事件，并且把浏览器300毫秒之后真正出发的事件给阻断掉
+  
+详细介绍：https://www.cnblogs.com/zhaodahai/p/6831165.html
+
+二十. addEventListener参数
