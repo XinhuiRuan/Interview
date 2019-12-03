@@ -356,4 +356,12 @@ REST以及RESTful的理解：https://www.jianshu.com/p/0e0ed296d2a3
   
 详细介绍：https://www.cnblogs.com/zhaodahai/p/6831165.html
 
+
 二十. addEventListener参数
+addEventListener(event, function, useCapture)
+其中，event指定事件名；function指定要事件触发时执行的函数；useCapture指定事件是否在捕获或冒泡阶段执行。
+
+JavaScript事件监听以及addEventListener参数分析：https://www.cnblogs.com/strivers/p/7489272.html
+
+
+二十一. 
