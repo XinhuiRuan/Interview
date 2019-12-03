@@ -364,4 +364,5 @@ addEventListener(event, function, useCapture)
 JavaScript事件监听以及addEventListener参数分析：https://www.cnblogs.com/strivers/p/7489272.html
 
 
-二十一. 
+二十一. iframe通信，同源和不同源两种情况，多少种方法
+https://www.jianshu.com/p/0e15b8e1ae5a
