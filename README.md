@@ -365,7 +365,11 @@ JavaScript事件监听以及addEventListener参数分析：https://www.cnblogs.c
 
 
 二十一. iframe通信，同源和不同源两种情况，多少种方法
-https://www.jianshu.com/p/0e15b8e1ae5a
+同源使用localStorage，但是不能跨域；
+不同源采用iframe的postMessage实现不同源通信。
+
+使用 iframe + postMessage 实现跨域通信：https://blog.csdn.net/tang_yi_/article/details/79401280
+HTML5 postMessage 和 onmessage API 详细应用：https://www.cnblogs.com/sugar-tomato/p/4497108.html
 
 
 二十二. 介绍知道的http返回的状态码
