@@ -366,3 +366,9 @@ JavaScript事件监听以及addEventListener参数分析：https://www.cnblogs.c
 
 二十一. iframe通信，同源和不同源两种情况，多少种方法
 https://www.jianshu.com/p/0e15b8e1ae5a
+
+
+二十二. 介绍知道的http返回的状态码
+
+
+二十三. http常用请求头
