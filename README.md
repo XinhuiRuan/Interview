@@ -459,4 +459,31 @@ HTML5 postMessage 和 onmessage API 详细应用：https://www.cnblogs.com/sugar
 https://blog.csdn.net/qq_30553235/article/details/79282113
 
 
-二十四. 强緩存和协商缓存
+二十四. 强缓存和协商缓存
+缓存分为两种：强缓存和协商缓存，根据响应的header内容来决定。
+
+              获取资源形式       状态码         发送请求到服务器
+
+强缓存         从缓存取     200（from cache）   否，直接从缓存取
+
+协商缓存       从缓存取     304（not modified） 是，通过服务器来告知缓存是否可用
+
+
+强缓存相关字段有expires，cache-control。如果cache-control与expires同时存在的话，cache-control的优先级高于expires。
+
+协商缓存相关字段有Last-Modified/If-Modified-Since，Etag/If-None-Match。
+
+彻底弄懂强缓存与协商缓存：https://www.jianshu.com/p/9c95db596df5
+强缓存和协商缓存区别和过程：https://www.jianshu.com/p/f6525b0f8813
+
+
+二十五. HTTP状态码说说你知道的
+
+
+二十六. 讲讲304
+
+
+二十七. 强缓存、协商缓存什么时候用哪个
+
+
+二十八. 前端优化
