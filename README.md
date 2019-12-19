@@ -372,7 +372,7 @@ JavaScript事件监听以及addEventListener参数分析：https://www.cnblogs.c
 HTML5 postMessage 和 onmessage API 详细应用：https://www.cnblogs.com/sugar-tomato/p/4497108.html
 
 
-二十二. 介绍知道的http返回的状态码
+二十二. 介绍知道的http返回的状态码 / HTTP状态码说说你知道的 / 讲讲304
 100    Continue    继续。客户端应继续其请求
 101    Switching Protocols    切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议
 
@@ -398,7 +398,9 @@ HTML5 postMessage 和 onmessage API 详细应用：https://www.cnblogs.com/sugar
 
 303    See Other    查看其它地址。与301类似。使用GET和POST请求查看
 
-304    Not Modified    未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源
+304    Not Modified    未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源。
+——— 如果客户端发送了一个带条件的GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个304状态码。
+HTTP 304状态码的详细讲解：https://blog.csdn.net/qq_39767955/article/details/81092779
 
 305    Use Proxy    使用代理。所请求的资源必须通过代理访问
 
@@ -454,12 +456,14 @@ HTML5 postMessage 和 onmessage API 详细应用：https://www.cnblogs.com/sugar
 
 505    HTTP Version not supported    服务器不支持请求的HTTP协议的版本，无法完成处理
 
+HTTP状态码五种总结大全：https://blog.csdn.net/Sunny_Future/article/details/81359794
+
 
 二十三. http常用请求头
 https://blog.csdn.net/qq_30553235/article/details/79282113
 
 
-二十四. 强缓存和协商缓存
+二十四. 强缓存和协商缓存 / 强缓存、协商缓存什么时候用哪个
 缓存分为两种：强缓存和协商缓存，根据响应的header内容来决定。
 
               获取资源形式       状态码         发送请求到服务器
@@ -475,15 +479,15 @@ https://blog.csdn.net/qq_30553235/article/details/79282113
 
 彻底弄懂强缓存与协商缓存：https://www.jianshu.com/p/9c95db596df5
 强缓存和协商缓存区别和过程：https://www.jianshu.com/p/f6525b0f8813
+http协商缓存VS强缓存（这篇很详细，解惑版）：https://www.cnblogs.com/wonyun/p/5524617.html
+
+二十五. 前端优化
 
 
-二十五. HTTP状态码说说你知道的
+二十六. GET和POST的区别
 
 
-二十六. 讲讲304
+二十七. 301和302的区别
 
 
-二十七. 强缓存、协商缓存什么时候用哪个
-
-
-二十八. 前端优化
+二十八.  HTTP支持的方法
