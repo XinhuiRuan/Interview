@@ -210,6 +210,9 @@ fetch发送post请求的时候，总是发送2次，第一次状态码是204（N
   JS发送跨域Post请求出现两次请求的解决办法：https://blog.csdn.net/weixin_34314962/article/details/93723222
   如何使用 fetch api：https://www.jianshu.com/p/1b966c113f64?utm_source=oschina-app
   ajax和axios、fetch的区别：https://www.jianshu.com/p/8bc48f8fde75
+  https://blog.csdn.net/VhWfR2u02Q/article/details/87887718
+  https://www.jianshu.com/p/f817490796d3
+  https://www.cnblogs.com/GoCircle/p/10637105.html
   
 
 十. Cookie、sessionStorage、localStorage 的区别
