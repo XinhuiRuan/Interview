@@ -330,20 +330,6 @@ session会在一定时间内保存在服务器上。当访问增多，会比较�
 
 Cookie,Session和Token机制和区别：https://www.jianshu.com/p/013f810cdb75
 
-
-十七. 一句话概括RESTFUL
-URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。
-
-常用的资源操作类型，即http请求方式(括号中是对应的SQL命令)
-  GET（SELECT）：从服务器取出资源（一项或多项）。
-  POST（CREATE）：在服务器新建一个资源。
-  PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。
-  PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。
-  DELETE（DELETE）：从服务器删除资源。
-
-REST以及RESTful的理解：https://www.jianshu.com/p/0e0ed296d2a3
-前端简单理解RESTful：https://blog.csdn.net/meishuixingdeququ/article/details/77478217
-
 十八. 讲讲viewport和移动端布局
 响应式布局的常用解决方案对比(媒体查询、百分比、rem和vw/vh）：https://github.com/forthealllight/blog/issues/13
 
