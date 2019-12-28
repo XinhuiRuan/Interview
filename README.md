@@ -1,31 +1,5 @@
 # Interview
 The interview questions of Front-end
-
-三. TCP 和 UDP 的区别
-
-1、连接方面区别
-TCP面向连接（如打电话要先拨号建立连接）。
-UDP是无连接的，即发送数据之前不需要建立连接。
-
-2、安全方面的区别
-TCP提供可靠的服务，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达。适合大数据量的交换。
-UDP尽最大努力交付，即不保证可靠交付。
-
-3、传输效率的区别
-TCP传输效率相对较低。
-UDP传输效率高，适用于对高速传输和实时性有较高的通信或广播通信。（对实时的应用比如IP电话和视频会议等）
-
-4、连接对象数量的区别
-TCP连接只能是点到点、一对一的。
-UDP支持一对一，一对多，多对一和多对多的交互通信。
-
-5、头部开销的区别
-TCP的首部较大，至少为20字节。
-UDP只有8字节。
-
-详细资源：一文搞懂TCP与UDP的区别 https://www.cnblogs.com/fundebug/p/differences-of-tcp-and-udp.html
-
-
 四. WebSocket的实现和应用
 
 1. 什么是WebSocket?
