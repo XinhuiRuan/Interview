@@ -122,27 +122,6 @@ fetch发送post请求的时候，总是发送2次，第一次状态码是204（N
   https://www.cnblogs.com/GoCircle/p/10637105.html
   
 
-十. Cookie、sessionStorage、localStorage 的区别
-共同点：
-  都是保存在浏览器端，并且是同源的
-  
-不同点：
-  Cookie：cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发 
-          给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下，存储的大小很小只有4K左右。 （重点：可以在浏览器
-          和服务器端来回传递，存储容量小，只有大约4K左右）
-  sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持，localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据； 
-          cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。（重点：本身就是一个回话过程，关闭浏览器后消失，session为一个回话，当页
-          面不同即使是同一页面打开两次，也被视为同一次回话）
-  localStorage：localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。（重点：同源窗口都会共享，并且不会失效，不管窗口或者
-          浏览器关闭与否都会始终生效）
-          
-补充说明一下cookie的作用：
-  保存用户登录状态。例如将用户id存储于一个cookie内，这样当用户下次访问该页面时就不需要重新登录了，现在很多论坛和社区都提供这样的功能。cookie还可以设置过期时间，当超过时间期限后，cookie就会自动消失。因此，系统往往可以提示用户保持登录状态的时间：常见选项有一个月、三个 月、一年等。
-  跟踪用户行为。例如一个天气预报网站，能够根据用户选择的地区显示当地的天气情况。如果每次都需要选择所在地是烦琐的，当利用了cookie后就会显得很人性化了，系统能够记住上一次访问的地区，当下次再打开该页面时，它就会自动显示上次用户所在地区的天气情况。因为一切都是在后台完成，所以这样的页面就像为某个用户所定制的一样，使用起来非常方便。
-  定制页面。如果网站提供了换肤或更换布局的功能，那么可以使用cookie来记录用户的选项，例如：背景色、分辨率等。当用户下次访问时，仍然可以保存上一次访问的界面风格。
-  
-session,cookie,sessionStorage,localStorage详解： https://www.cnblogs.com/xufeimei/p/10143786.html
-  
   
 十一. 说一下 Web Worker
 在HTML页面中，如果在执行脚本时，页面的状态是不可相应的，直到脚本执行完成后，页面才变成可相应。web worker是运行在后台的js，独立于其他脚本，不会影响页面你的性能。并且通过postMessage将结果回传到主线程。这样在进行复杂操作的时候，就不会阻塞主线程了。
@@ -207,38 +186,6 @@ iframe详解： https://www.jianshu.com/p/d67b15802a70
 
 详解：https://www.cnblogs.com/wuqiutong/p/5986191.html
 
-
-十五. Cookie如何防范XSS攻击
-Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站上注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可获取用户的敏感信息如 Cookie、SessionID 等，进而危害数据安全。
-
-为了和 CSS 区分，这里把攻击的第一个字母改成了 X，于是叫做 XSS。
-
-XSS 的本质是：恶意代码未经过滤，与网站正常的代码混在一起；浏览器无法分辨哪些脚本是可信的，导致恶意脚本被执行。
-
-而由于直接在用户的终端执行，恶意代码能够直接获取用户的信息，或者利用这些信息冒充用户向网站发起攻击者定义的请求。
-
-在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行，来完成比较复杂的攻击策略。
-
-Cookie防范XSS攻击，需要在HTTP头部配上，set-cookie：
-  1. httponly-。这个属性可以防止XSS,它会禁止javascript脚本来访问cookie。
-  2. secure - 这个属性告诉浏览器仅在请求为https的时候发送cookie。
-结果应该是这样的：Set-Cookie=<cookie-value>.....
-  
-前端安全系列（一）：如何防止XSS攻击？：https://segmentfault.com/a/1190000016551188#articleHeader11
-
-
-十六. Cookie和Session的区别
-cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。同时我们也看到，
-
-由于采用服务器端保持状态的方案在客户端也需要保存一个标识，所以session机制可能需要借助于cookie机制来达到保存标识的目的
-
-cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑到安全应当使用session
-
-session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie
-
-单个cookie保存的数据不能超过4k,很多浏览器都限制一个站点最多保存20个cookie。
-
-Cookie,Session和Token机制和区别：https://www.jianshu.com/p/013f810cdb75
 
 十八. 讲讲viewport和移动端布局
 响应式布局的常用解决方案对比(媒体查询、百分比、rem和vw/vh）：https://github.com/forthealllight/blog/issues/13
@@ -357,31 +304,6 @@ HTTP状态码五种总结大全：https://blog.csdn.net/Sunny_Future/article/det
 
 二十三. http常用请求头
 https://blog.csdn.net/qq_30553235/article/details/79282113
-
-
-二十四. 强缓存和协商缓存 / 强缓存、协商缓存什么时候用哪个
-缓存分为两种：强缓存和协商缓存，根据响应的header内容来决定。
-
-              获取资源形式       状态码         发送请求到服务器
-
-强缓存         从缓存取     200（from cache）   否，直接从缓存取
-
-协商缓存       从缓存取     304（not modified） 是，通过服务器来告知缓存是否可用
-
-
-强缓存相关字段有expires，cache-control。如果cache-control与expires同时存在的话，cache-control的优先级高于expires。
-
-协商缓存相关字段有Last-Modified/If-Modified-Since，Etag/If-None-Match。
-
-选择合适的缓存策略
-  对于大部分的场景都可以使用强缓存配合协商缓存解决，但是在一些特殊的地方可能需要选择特殊的缓存策略：
-  —— 对于某些不需要缓存的资源，可以使用 Cache-control: no-store ，表示该资源不需要缓存
-  —— 对于频繁变动的资源，可以使用 Cache-Control: no-cache 并配合 ETag 使用，表示该资源已被缓存，但是每次都会发送请求询问资源是否更新。
-  —— 对于代码文件来说，通常使用 Cache-Control: max-age=31536000 并配合策略缓存使用，然后对文件进行指纹处理，一旦文件名变动就会立刻下载新的文件。
-
-彻底弄懂强缓存与协商缓存：https://www.jianshu.com/p/9c95db596df5
-强缓存和协商缓存区别和过程：https://www.jianshu.com/p/f6525b0f8813
-http协商缓存VS强缓存（这篇很详细，解惑版）：https://www.cnblogs.com/wonyun/p/5524617.html
 
 
 二十五. 前端优化
@@ -517,11 +439,3 @@ ii. 图片加载优化
 
 面试--关于前端性能优化篇：https://blog.csdn.net/qq_37674616/article/details/86490686
 前端面试题（六）前端性能优化篇：https://www.jianshu.com/p/3db597e3928e
-
-二十六. GET和POST的区别
-
-
-二十七. 301和302的区别
-
-
-二十八.  HTTP支持的方法
